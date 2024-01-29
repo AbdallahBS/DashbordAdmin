@@ -15,7 +15,7 @@ export default function Blog() {
 
   useEffect(() => {
     // Fetch data from your API
-    fetch("http://localhost:9000/.netlify/functions/api/getBlog")
+    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/getBlog")
       .then((response) => response.json())
       .then((data) => {
         setBlogs(data);
@@ -70,7 +70,7 @@ export default function Blog() {
   };
   const handleSaveChanges = () => {
     // Make API call to modifyBlog
-    fetch("http://localhost:9000/.netlify/functions/api/modBlog", {
+    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/modBlog", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ export default function Blog() {
       console.log("Selected Blog ID:", blog.id);
 
       // Make API call to deleteBlog
-      fetch(`http://localhost:9000/.netlify/functions/api/delBlog`, {
+      fetch(`https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/delBlog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -133,7 +133,7 @@ export default function Blog() {
   const handleAddBlog = () => {
     console.log(newBlogData)
     // Make API call to addBlog
-    fetch("http://localhost:9000/.netlify/functions/api/addBlog", {
+    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/addBlog", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

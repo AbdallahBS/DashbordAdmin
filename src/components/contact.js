@@ -8,7 +8,7 @@ export default function Contact() {
 
   useEffect(() => {
     // Fetch data from your API
-    fetch("http://localhost:9000/.netlify/functions/api/getAllEmails")
+    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/getAllEmails")
       .then((response) => response.json())
       .then((data) => {
         setEmails(data.emailData);
@@ -19,7 +19,7 @@ export default function Contact() {
   const handleDeleteClick = (email)=>{
     
     if(email){
-      fetch(`http://localhost:9000/.netlify/functions/api/delMail`, {
+      fetch(`https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/delMail`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,48 +86,7 @@ export default function Contact() {
                   ))}
               </MDBTableBody>
             </MDBTable>
-            <div className="row tm-clients-images">
-            <div className="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-              <a href="https://google.com">
-                <img src="img/client-1.png" alt="Client Image" className="img-fluid tm-client-img" />
-              </a>                          
-            </div>
-            <div className="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-              <a href="https://facebook.com">
-                <img src="img/client-2.png" alt="Client Image" className="img-fluid tm-client-img" />
-              </a>                          
-            </div>
-            <div className="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-              <a href="https://twitter.com">
-                <img src="img/client-3.png" alt="Client Image" className="img-fluid tm-client-img" />
-              </a>                          
-            </div>
-            <div className="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-              <a href="https://instagram.com">
-                <img src="img/client-4.png" alt="Client Image" className="img-fluid tm-client-img" />
-              </a>                          
-            </div>
-            <div className="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-              <a href="https://google.com">
-                <img src="img/client-5.png" alt="Client Image" className="img-fluid tm-client-img" />
-              </a>                          
-            </div>
-            <div className="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-              <a href="https://facebook.com">
-                <img src="img/client-6.png" alt="Client Image" className="img-fluid tm-client-img" />
-              </a>                          
-            </div>
-            <div className="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-              <a href="https://twitter.com">
-                <img src="img/client-7.png" alt="Client Image" className="img-fluid tm-client-img" />
-              </a>                          
-            </div>
-            <div className="col-xl-3 col-lg-6 col-md-4 col-sm-6 tm-img-wrap">
-              <a href="https://instagram.com">
-                <img src="img/client-8.png" alt="Client Image" className="img-fluid tm-client-img" />
-              </a>                          
-            </div>
-          </div>
+           
           </div>
         </div>
       </section>

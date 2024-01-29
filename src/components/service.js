@@ -17,7 +17,7 @@ export default function Service() {
   const handleShow = () => setShow(true);
   useEffect(() => {
     // Fetch data from your API
-    fetch("http://localhost:9000/.netlify/functions/api/getTech")
+    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/getTech")
       .then((response) => response.json())
       .then((data) => {
         setServices(data); // Update the state variable to setServices
@@ -71,7 +71,7 @@ export default function Service() {
   const handleSaveChanges = () => {
     console.log(modifyServiceData)
     // Make API call to modifyService
-    fetch("http://localhost:9000/.netlify/functions/api/modTech", {
+    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/modTech", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default function Service() {
   const handleDeleteClick = (service)=>{
     
     if(service){
-      fetch(`http://localhost:9000/.netlify/functions/api/delTech`, {
+      fetch(`https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/delTech`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -130,7 +130,7 @@ export default function Service() {
   const handleAddService = () => {
     console.log(newServiceData)
     // Make API call to addBlog
-    fetch("http://localhost:9000/.netlify/functions/api/addTech", {
+    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/addTech", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
