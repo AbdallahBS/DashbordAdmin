@@ -10,7 +10,7 @@ export async function usernameValidate(values){
         const { status } = await authenticate(values.username);
         
         if(status !== 200){
-            errors.exist = toast.error("Administrateur n'existe pas...!")
+            errors.exist = toast.error("Administrateur ou client n'existe pas...!")
         }
     }
 
