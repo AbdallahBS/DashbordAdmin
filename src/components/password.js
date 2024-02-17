@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import {
   MDBBtn,
   MDBContainer,
@@ -18,6 +18,10 @@ import { passwordValidate } from '../helper/validate';
 import useFetch from '../hooks/fetch.hook';
 import { useAuthStore } from '../store/store';
 import { verifyPassword } from '../helper/helper';
+import { jwtDecode } from 'jwt-decode';
+
+
+
 export default function Password() {
   const navigate = useNavigate();
   const {username} = useAuthStore(state => state.auth)
@@ -43,12 +47,37 @@ export default function Password() {
         
         let {token}=res.data;
         localStorage.setItem('token',token);
-        navigate('/admin');
+        
+        navigateBasedOnRole();
+
       }).catch(error=>{
         console.log(error)
       })
     }
+    
   })
+  
+  const navigateBasedOnRole = () => {
+
+    try {
+      const token = localStorage.getItem('token');
+      const decodedToken = jwtDecode(token);
+      const {role} = decodedToken;
+      console.log('roleeeeeeeeeeee',role);
+    
+        if (role === 'client') {
+          console.log('client');
+          navigate('/client');
+        } else {
+          console.log('not client');
+          navigate('/admin');
+        }
+      
+    } catch (error) {
+      console.error('Error decoding token:', error);
+    }
+  };
+  
   if(isLoading) return <h1 className='text-2xl font-bold'>isLoading</h1>
   if(serverError) return <h1 className='text-xl text-red-500'>{serverError.message}</h1>
   return (
@@ -58,8 +87,8 @@ export default function Password() {
       <MDBCard>
         <MDBRow className='g-5'>
 
-          <MDBCol md='6'>
-            
+        <MDBCol md="6">
+            <MDBCardImage src="img/bg3.jpg" alt="login form" className="rounded-start w-100" />
           </MDBCol>
 
           <MDBCol md='6'>

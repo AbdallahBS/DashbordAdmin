@@ -17,7 +17,7 @@ export default function Service() {
   const handleShow = () => setShow(true);
   useEffect(() => {
     // Fetch data from your API
-    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/getTech")
+    fetch("https://jovial-taffy-bc3db5.netlify.app/.netlify/functions/api/getTech")
       .then((response) => response.json())
       .then((data) => {
         setServices(data); // Update the state variable to setServices
@@ -71,7 +71,7 @@ export default function Service() {
   const handleSaveChanges = () => {
     console.log(modifyServiceData)
     // Make API call to modifyService
-    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/modTech", {
+    fetch("https://jovial-taffy-bc3db5.netlify.app/.netlify/functions/api/modTech", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default function Service() {
   const handleDeleteClick = (service)=>{
     
     if(service){
-      fetch(`https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/delTech`, {
+      fetch(`https://jovial-taffy-bc3db5.netlify.app/.netlify/functions/api/delTech`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -130,7 +130,7 @@ export default function Service() {
   const handleAddService = () => {
     console.log(newServiceData)
     // Make API call to addBlog
-    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/addTech", {
+    fetch("https://graceful-souffle-18d033.netlify.app/.netlify/functions/api/addTech", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -151,6 +151,12 @@ export default function Service() {
     <div className="tm-section-wrap bg-white">
       
       <section id="work" className="row tm-section">
+      <div className="col-12 tm-section-pad d-flex justify-content-center align-items-center">
+        <div className="text-center">
+          <h2 className="tm-text-primary mb-4">Gestion des services</h2>
+          {/* Votre autre contenu va ici */}
+        </div>
+      </div>
       <button
                     type="button"
                     className="btn btn-primary mr-2"

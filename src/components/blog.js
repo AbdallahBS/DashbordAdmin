@@ -12,17 +12,19 @@ export default function Blog() {
     image: null,
   });
   const [showAddModal, setShowAddModal] = useState(false);
+  const [updateTrigger, setUpdateTrigger] = useState(false);// This key triggers a re-render
+
 
   useEffect(() => {
     // Fetch data from your API
-    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/getBlog")
+    fetch("https://jovial-taffy-bc3db5.netlify.app/.netlify/functions/api/getBlog")
       .then((response) => response.json())
       .then((data) => {
         setBlogs(data);
         console.log(data)
       })
       .catch((error) => console.error("Error fetching blogs:", error));
-  }, []);
+  }, [updateTrigger]);
 
   const handleModifyClick = (blog) => {
     // Set the selected blog for modification
@@ -69,8 +71,10 @@ export default function Blog() {
     }));
   };
   const handleSaveChanges = () => {
+    setUpdateTrigger((prev) => !prev);
+    console.log("mod blg");
     // Make API call to modifyBlog
-    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/modBlog", {
+    fetch("https://jovial-taffy-bc3db5.netlify.app/.netlify/functions/api/modBlog", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -82,6 +86,7 @@ export default function Blog() {
     })
       .then((response) => response.json())
       .then((data) => {
+        setUpdateTrigger((prev) => !prev);
         // Handle success, e.g., update state, close modal
         alert("Blog modified successfully:", data);
         handleClose();
@@ -90,6 +95,7 @@ export default function Blog() {
         // Handle error
         alert("Error modifying blog:", error);
       });
+      
   };
   
   const handleDeleteClick = (blog) => {
@@ -99,7 +105,7 @@ export default function Blog() {
       console.log("Selected Blog ID:", blog.id);
 
       // Make API call to deleteBlog
-      fetch(`https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/delBlog`, {
+      fetch(`https://jovial-taffy-bc3db5.netlify.app/.netlify/functions/api/delBlog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -110,6 +116,7 @@ export default function Blog() {
       })
         .then((response) => response.json())
         .then((data) => {
+          setUpdateTrigger((prev) => !prev);
           // Handle success, e.g., update state, close modal
           alert("Blog deleted successfully:", data);
           handleClose();
@@ -133,7 +140,7 @@ export default function Blog() {
   const handleAddBlog = () => {
     console.log(newBlogData)
     // Make API call to addBlog
-    fetch("https://teal-basbousa-aada12.netlify.app/.netlify/functions/api/addBlog", {
+    fetch("https://jovial-taffy-bc3db5.netlify.app/.netlify/functions/api/addBlog", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -142,6 +149,7 @@ export default function Blog() {
     })
       .then((response) => response.json())
       .then((data) => {
+        setUpdateTrigger((prev) => !prev);
         alert("Blog added successfully:", data);
         handleClose();
       })
@@ -156,13 +164,19 @@ export default function Blog() {
   return (
     
     <section id="about" className="row tm-section">
+      <div className="col-12 tm-section-pad d-flex justify-content-center align-items-center">
+        <div className="text-center">
+          <h2 className="tm-text-primary mb-4">Gestion des Articles</h2>
+          {/* Votre autre contenu va ici */}
+        </div>
+      </div>
        <button
                     type="button"
                     className="btn btn-primary mr-2"
                     data-mdb-ripple-init
                     onClick={() => handleAjoutClick()}
                   >
-                    Ajouter Un Blog
+                    Ajouter Un Article
                   </button>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {Array.isArray(blogs.blogPosts) &&

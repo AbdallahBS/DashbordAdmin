@@ -35,6 +35,12 @@ export default function Nav() {
           </a>
         </li>
         <li className="nav-item">
+          <a href="#demandes" className="nav-link">
+            <span className="d-inline-block mr-3">Gestion des demandes</span>
+            <span className="d-inline-block tm-white-rect" />
+          </a>
+        </li>
+        <li className="nav-item">
           <a href="#clients" className="nav-link">
             <span className="d-inline-block mr-3">assistance clients</span>
             <span className="d-inline-block tm-white-rect" />
@@ -45,7 +51,7 @@ export default function Nav() {
       <footer className="text-center text-white small">
         <br></br><br></br>
         <p className="mb--0 mb-2">Kube Kloud 2023/2024</p>
-        <p className="mb-0">espace admin
+        <p className="mb-0">Espace admin
         </p>
       </footer>
     </div>
